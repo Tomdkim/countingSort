@@ -1,10 +1,25 @@
 import sys
 
 # argv: a list of integers that are >= 0 and less than a certain limit k.
-def main(list, k):
+def main(list_string, k):
 
-    # Parse input 'list ' to turn it into a list of integers.
+    j = 0
+    # list_string = list_string.rstrip('\r\n\t\b')
+    input_array=[]
+    # Parse String input 'list' to turn it into a list of integers.
+    for i in list_string:
+        if (i == ','):
+            input_array.append(j)
+            j = 0
+            continue
+        if (i == '['):
+            continue
+        if (i == ']'):
+            input_array.append(j)
+            continue
+        j = j*10 + int(i)
 
+    print(input_array)
     
     counting_array = []
     sorted_array = []
@@ -14,7 +29,7 @@ def main(list, k):
         counting_array.append(0)
         i += 1
     # For each element from input list, update our counting_array.
-    for element in list:
+    for element in input_array:
         counting_array[int(element)] += 1
     j = 0
     while (j <= k):
@@ -29,6 +44,6 @@ def main(list, k):
 if __name__ == "__main__":
     # argv: countingSort.py - a list of integers - an upper limit k
     if (len(sys.argv) != 3):
-        print("Wrong number of arguments: Please include your path of the file.")
+        print("Wrong number of arguments: Please include the input list and an upper limit.")
         exit(1)
     main(sys.argv[1], int(sys.argv[2]))
