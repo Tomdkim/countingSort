@@ -19,8 +19,6 @@ def main(list_string, k):
             continue
         j = j*10 + int(i)
 
-    print(input_array)
-    
     counting_array = []
     sorted_array = []
     i = 0
